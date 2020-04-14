@@ -13,13 +13,13 @@ export class NavComponent implements OnInit {
 
   model: any = {};
 
-  constructor(public authservice: AuthService, private alertify: AlertifyService, private router: Router) { }
+  constructor(public authService: AuthService, private alertify: AlertifyService, private router: Router) { }
 
   ngOnInit() {
   }
 
   login() {
-    this.authservice.login(this.model).subscribe(next => {
+    this.authService.login(this.model).subscribe(next => {
       this.alertify.success('Logged in succesfully');
     }, error => {
       this.alertify.error(error);
@@ -30,7 +30,7 @@ export class NavComponent implements OnInit {
   }
 
   loggedIn() {
-    return this.authservice.loggedIn();
+    return this.authService.loggedIn();
     // const token = localStorage.getItem('token');
     // !! returns true or false. If token exist, it returns true, otherwise returns false
     // return !!token;
